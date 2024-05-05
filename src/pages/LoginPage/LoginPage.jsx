@@ -12,7 +12,7 @@ const LoginPage = () => {
     const [isSubmitDisabled, setSubmitDisabled] = useState(true);
 
     const handleAuthorize = () => {
-        dispatch(AuthEffects.authorize(name, password));
+        dispatch(AuthEffects.authorize({name, password}));
     };
 
     useEffect(() => {

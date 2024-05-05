@@ -37,5 +37,5 @@ export const ActivityReducer = activitySlice.reducer;
 
 export const ActivityActions = {...activitySlice.actions};
 export const ActivityEffects = {
-
+    getActivity,
 };

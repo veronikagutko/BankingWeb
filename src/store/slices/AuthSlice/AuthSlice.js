@@ -1,9 +1,8 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { authorizeRequest } from "../../../services/AuthServices";
 
-const authorize = createAsyncThunk('authorize', async (name, password) => {
+const authorize = createAsyncThunk('authorize', async ({name, password}) => {
     const response = await authorizeRequest(name, password);
-    console.log(response);
     return response;
 });
 
