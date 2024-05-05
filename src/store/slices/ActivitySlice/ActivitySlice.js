@@ -1,16 +1,14 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { getActivityRequest } from "../../../services/ActivityServices";
 
-const getActivity = createAsyncThunk('getActivity', async (take, skip, telegramId) => {
+const getActivity = createAsyncThunk('getActivity', async ({take, skip, telegramId}) => {
     const response = await getActivityRequest(take, skip, telegramId);
     return response;
 })
 
 const initialState = {
     isLoading: false,
-    telegramId: null,
-    action: null,
-    createdAt: null,
+    activities: [],
 };
 
 const activitySlice = createSlice({
@@ -25,9 +23,7 @@ const activitySlice = createSlice({
             state.isLoading = false;
         })
         builder.addCase(getActivity.fulfilled, (state, action) => {
-            state.telegramId = action.payload.telegramId;
-            state.action = action.payload.action;
-            state.createdAt = action.payload.createdAt;
+            state.activities = [...action.payload];
             state.isLoading = false;
         })
     }
