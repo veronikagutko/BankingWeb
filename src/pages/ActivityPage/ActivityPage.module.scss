@@ -48,8 +48,12 @@
     & > td:first-child {
         cursor: pointer;
     }
-    
+
     &  > td:last-child {
         text-wrap: nowrap;
     }
+}
+
+.headerRow > th:first-child {
+    text-wrap: nowrap;
 }

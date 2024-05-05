@@ -54,10 +54,10 @@ const ActivityPage = () => {
                     <div className={styles.tableContainer}>
                         <Table>
                             <TableHead>
-                                <TableRow>
-                                    <TableCell>Telegram Id</TableCell>
-                                    <TableCell>Message</TableCell>
-                                    <TableCell>Date</TableCell>
+                                <TableRow className={styles.headerRow}>
+                                    <TableCell>ID Пользователя</TableCell>
+                                    <TableCell>Сообщение</TableCell>
+                                    <TableCell>Дата</TableCell>
                                 </TableRow>
                             </TableHead>
                             <TableBody>
