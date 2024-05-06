@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { authorizeRequest } from "../../../services/AuthServices";
+import { STORAGE_KEYS } from "../../../constants/SessionStorageKeys";
 
 const authorize = createAsyncThunk('authorize', async ({name, password}) => {
     const response = await authorizeRequest(name, password);
@@ -17,7 +18,11 @@ const initialState = {
 const authSlice = createSlice({
     name: 'authSlice',
     initialState,
-    reducers: {},
+    reducers: {
+        setAuthorized: (state, action) => {
+            state.isAuthorized = action.payload;
+        }
+    },
     extraReducers: (builder) => {
         builder.addCase(authorize.pending, state => {
             state.isLoading = true;
@@ -29,6 +34,9 @@ const authSlice = createSlice({
             state.accessToken = action.payload.accessToken;
             state.validTo = action.payload.validTo;
             state.validFrom = action.payload.validFrom;
+            sessionStorage.setItem(STORAGE_KEYS.accessToken, state.accessToken);
+            sessionStorage.setItem(STORAGE_KEYS.validFrom, new Date(state.validFrom));
+            sessionStorage.setItem(STORAGE_KEYS.validTo, new Date(state.validTo));
             state.isAuthorized = true;
             state.isLoading = false;
         })

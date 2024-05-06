@@ -3,10 +3,12 @@ import styles from './LoginPage.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { AuthEffects } from '../../store/slices/AuthSlice/AuthSlice';
 import Logo from '../../components/Logo/Logo';
+import { STORAGE_KEYS } from '../../constants/SessionStorageKeys';
+import { Link } from 'react-router-dom';
 
 const LoginPage = () => {
     const dispatch = useDispatch();
-    const {isLoading} = useSelector(state => state.auth);
+    const {isLoading, isAuthorized, accessToken, validFrom, validTo} = useSelector(state => state.auth);
     const [name, setName] = useState('admin');
     const [password, setPassword] = useState('bel_admin');
     const [isSubmitDisabled, setSubmitDisabled] = useState(true);
@@ -38,9 +40,9 @@ const LoginPage = () => {
                         <label htmlFor="password">Пароль</label>
                     </div>
 
-                    <button disabled={isSubmitDisabled || isLoading} onClick={handleAuthorize} className={styles.submitButton}>
+                    <Link to="/activity" disabled={isSubmitDisabled || isLoading} onClick={handleAuthorize} className={styles.submitButton}>
                         {isLoading ? <div className={styles.loader}/> : <span>Войти</span>}
-                    </button>
+                    </Link>
                 </div>
             </div>
         </div>

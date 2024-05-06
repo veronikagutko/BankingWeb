@@ -31,4 +31,17 @@
             color: $DARK_GRAY;
         }
     }
+
+    & > button {
+        @extend a;
+        cursor: pointer;
+        margin-left: 30px;
+        color: $RED;
+        background-color: transparent;
+        border: none;
+
+        &:hover {
+            color: rgba($RED, 0.6);
+        }
+    }
 }

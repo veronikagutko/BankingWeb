@@ -47,6 +47,11 @@
 .dataRow {
     & > td:first-child {
         cursor: pointer;
+        transition: all 0.3s;
+
+        &:hover {
+            color: rgba($BLACK, 0.4);
+        }
     }
 
     &  > td:last-child {
