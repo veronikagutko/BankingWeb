@@ -1,0 +1,10 @@
+@import '../../../styles/colors';
+
+.dataRow > td:nth-child(2) {
+    cursor: pointer;
+    transition: all 0.3s;
+
+    &:hover {
+        color: rgba($BLACK, 0.4);
+    }
+}

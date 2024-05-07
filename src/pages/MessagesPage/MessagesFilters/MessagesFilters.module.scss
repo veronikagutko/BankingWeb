@@ -1,0 +1,47 @@
+@import '../../../styles/colors';
+
+@mixin inputBackground {
+    font-size: 18px;
+    background-color: rgba($DARK_GRAY, 0.2);
+    border: none;
+    border-bottom: 1px solid $BLACK;
+}
+
+.filtersContainer {
+    display: flex;
+    justify-content: flex-start;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.searchInput {
+    @include inputBackground();
+    padding: 10px 15px;
+    
+    outline: none;
+    transition: 0.3s;
+
+    &:hover, 
+    &:focus,
+    &:active {
+        border-color: $GREEN;
+        outline: hidden;
+
+        & + label {
+            color: $GREEN;
+        }
+    }
+}
+
+.selectInput  {
+    @include inputBackground();
+    padding: 10px 15px;
+}
+
+.isReadedInput {
+    @include inputBackground();
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    gap: 5px;
+}

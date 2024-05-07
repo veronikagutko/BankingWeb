@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { getMessageResponseRequest, getMessagesRequest, sendMessageRequest } from "../../../services/MessagesServices";
 
-const getMessages = createAsyncThunk('getMessages', async (telegramId, messageType, isReaded, take, skip) => {
+const getMessages = createAsyncThunk('getMessages', async ({telegramId, messageType, isReaded, take, skip}) => {
     const response = await getMessagesRequest(telegramId, messageType, isReaded, take, skip);
     return response;
 });
@@ -11,7 +11,7 @@ const getMessageResponse = createAsyncThunk('getMessageResponse', async (message
     return reponse;
 });
 
-const sendMessage = createAsyncThunk('sendMessage', async (message, messageId) => {
+const sendMessage = createAsyncThunk('sendMessage', async ({message, messageId}) => {
     await sendMessageRequest(message, messageId);
 });
 
@@ -19,6 +19,8 @@ const sendMessage = createAsyncThunk('sendMessage', async (message, messageId) =
 const initialState = {
     isLoading: false,
     messages: [],
+    count: 0,
+    responseMessage: null,
 };
 
 const messagesSlice = createSlice({
@@ -33,19 +35,20 @@ const messagesSlice = createSlice({
             state.isLoading = false;
         });
         builder.addCase(getMessages.fulfilled, (state, action) => {
-            state.messages = [...action.payload];
+            state.messages = [...action.payload.items];
+            state.count = action.payload.count;
             state.isLoading = false;
         });
-        // builder.addCase(getMessageResponse.pending, state => {
-        //     state.isLoading = true;
-        // });
-        // builder.addCase(getMessageResponse.rejected, state => {
-        //     state.isLoading = false;
-        // });
-        // builder.addCase(getMessageResponse.fulfilled, state => {
-        //     // state.
-        //     state.isLoading = false;
-        // });
+        builder.addCase(getMessageResponse.pending, state => {
+            state.isLoading = true;
+        });
+        builder.addCase(getMessageResponse.rejected, state => {
+            state.isLoading = false;
+        });
+        builder.addCase(getMessageResponse.fulfilled, (state, action) => {
+            state.responseMessage = {...action.payload};
+            state.isLoading = false;
+        });
         builder.addCase(sendMessage.pending, state => {
             state.isLoading = true;
         });

@@ -14,7 +14,6 @@ const App = () => {
 
 	useEffect(() => {
 		const tokenValidity = sessionStorage.getItem(STORAGE_KEYS.validTo) ? new Date(sessionStorage.getItem(STORAGE_KEYS.validTo)) : null;
-		console.log(tokenValidity);
 
 		if (tokenValidity && tokenValidity > Date.now()) {
 			dispatch(AuthActions.setAuthorized(true));

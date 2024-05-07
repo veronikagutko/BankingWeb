@@ -72,27 +72,27 @@ const ActivityPage = () => {
                                 ))}
                             </TableBody>
                             <TableFooter>
-                            <TableRow>
-                                <TablePagination
-                                rowsPerPageOptions={[10, 20, 30]}
-                                colSpan={3}
-                                count={activities.length}
-                                rowsPerPage={rowsPerPage}
-                                page={page}
-                                disabled={false}
-                                labelRowsPerPage="Строк на странице:"
-                                labelDisplayedRows={({from, to, count}) => {
-                                    return '';
-                                }}
-                                slotProps={{
-                                    select: {
-                                        native: true,
-                                    },
-                                }}
-                                onPageChange={(e) => handleChangePage(e.target.value)}
-                                onRowsPerPageChange={(e) => handleChangeRowsPerPage(e.target.value)}
-                                />
-                            </TableRow>
+                                <TableRow>
+                                    <TablePagination
+                                        rowsPerPageOptions={[10, 20, 30]}
+                                        colSpan={3}
+                                        count={activities.length}
+                                        rowsPerPage={rowsPerPage}
+                                        page={page}
+                                        disabled={false}
+                                        labelRowsPerPage="Строк на странице:"
+                                        labelDisplayedRows={({from, to, count}) => {
+                                            return '';
+                                        }}
+                                        slotProps={{
+                                            select: {
+                                                native: true,
+                                            },
+                                        }}
+                                        onPageChange={(e) => handleChangePage(e.target.value)}
+                                        onRowsPerPageChange={(e) => handleChangeRowsPerPage(e.target.value)}
+                                    />
+                                </TableRow>
                             </TableFooter>
                         </Table>
                     </div>
