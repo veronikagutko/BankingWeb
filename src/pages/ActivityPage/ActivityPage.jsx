@@ -7,7 +7,7 @@ import { toast } from 'react-toastify';
 
 const ActivityPage = () => {
     const dispatch = useDispatch();
-    const {activities} = useSelector(state => state.activity)
+    const {activities, count} = useSelector(state => state.activity)
     const [page, setPage] = useState(0);
     const [rowsPerPage, setRowsPerPage] = useState(20);
     const [telegramId, setTelegramId] = useState(undefined);
@@ -18,13 +18,14 @@ const ActivityPage = () => {
             skip: currentSkip, 
             telegramId: currentTelegramId || null,
         }));
-    }, [dispatch, page, rowsPerPage, telegramId]);
+    }, [dispatch]);
 
     const handleChangePage = (value) => {
         setPage(value);
     };
 
     const handleChangeRowsPerPage = (value) => {
+        setPage(0);
         setRowsPerPage(Number(value));
     };
 
@@ -76,20 +77,20 @@ const ActivityPage = () => {
                                     <TablePagination
                                         rowsPerPageOptions={[10, 20, 30]}
                                         colSpan={3}
-                                        count={activities.length}
+                                        count={count}
                                         rowsPerPage={rowsPerPage}
                                         page={page}
                                         disabled={false}
                                         labelRowsPerPage="Строк на странице:"
                                         labelDisplayedRows={({from, to, count}) => {
-                                            return '';
+                                            return `${from}-${to} из ${count}`;
                                         }}
                                         slotProps={{
                                             select: {
                                                 native: true,
                                             },
                                         }}
-                                        onPageChange={(e) => handleChangePage(e.target.value)}
+                                        onPageChange={(_, page) => handleChangePage(page)}
                                         onRowsPerPageChange={(e) => handleChangeRowsPerPage(e.target.value)}
                                     />
                                 </TableRow>

@@ -9,6 +9,7 @@ const getActivity = createAsyncThunk('getActivity', async ({take, skip, telegram
 const initialState = {
     isLoading: false,
     activities: [],
+    count: 0,
 };
 
 const activitySlice = createSlice({
@@ -23,7 +24,8 @@ const activitySlice = createSlice({
             state.isLoading = false;
         })
         builder.addCase(getActivity.fulfilled, (state, action) => {
-            state.activities = [...action.payload];
+            state.activities = [...action.payload.items];
+            state.count = action.payload.count;
             state.isLoading = false;
         })
     }
