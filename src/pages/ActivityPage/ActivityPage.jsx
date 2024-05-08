@@ -4,10 +4,11 @@ import styles from './ActivityPage.module.scss';
 import { Table, TableBody, TableCell, TableFooter, TableHead, TablePagination, TableRow } from '@mui/material';
 import { ActivityEffects } from '../../store/slices/ActivitySlice/ActivitySlice';
 import { toast } from 'react-toastify';
+import Loader from '../../components/Loader/Loader';
 
 const ActivityPage = () => {
     const dispatch = useDispatch();
-    const {activities, count} = useSelector(state => state.activity)
+    const {activities, count, isLoading} = useSelector(state => state.activity)
     const [page, setPage] = useState(0);
     const [rowsPerPage, setRowsPerPage] = useState(20);
     const [telegramId, setTelegramId] = useState(undefined);
@@ -51,7 +52,8 @@ const ActivityPage = () => {
 
                 <input className={styles.searchInput} placeholder='ID телеграмма' type="text" value={telegramId} onChange={(e) => setTelegramId(e.target.value)} />
                 
-                {activities.length > 0 && (
+                {isLoading && <Loader />}
+                {!isLoading && activities.length > 0 && (
                     <div className={styles.tableContainer}>
                         <Table>
                             <TableHead>

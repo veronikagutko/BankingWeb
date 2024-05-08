@@ -30,7 +30,9 @@ const MessagesPage = () => {
                     setReaded={setReaded}
                     messageType={messageType}
                     setMessageType={setMessageType} />
+
                 <MessagesTable messageType={messageType} isReaded={isReaded} telegramId={telegramId} handleOpenDialog={handleOpenDialog} />
+                
                 {dialogOpen && dialogType === 0 ? (
                     <ShowResponseDialog dialogOpen={dialogOpen} setDialogOpen={setDialogOpen} messageId={chosenMessageId} />
                 ) : (

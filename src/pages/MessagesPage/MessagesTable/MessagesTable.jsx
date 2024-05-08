@@ -4,12 +4,13 @@ import styles from './MessagesTable.module.scss';
 import MessagesTableRow from './MessagesTableRow';
 import { useDispatch, useSelector } from 'react-redux';
 import { MessagesEffects } from '../../../store/slices/MessagesSlice/MessagesSlice';
+import Loader from '../../../components/Loader/Loader';
 
 const MessagesTable = ({messageType, isReaded, telegramId, handleOpenDialog}) => {
     const dispatch = useDispatch();
     const [page, setPage] = useState(0);
     const [rowsPerPage, setRowsPerPage] = useState(20);
-    const {messages, count} = useSelector(state => state.messages);
+    const {messages, count, isLoading} = useSelector(state => state.messages);
 
     const fetchMessages = useCallback(({telegramId, messageType, isReaded, take, skip}) => {
         dispatch(MessagesEffects.getMessages({telegramId, messageType, isReaded, take, skip}));
@@ -25,7 +26,8 @@ const MessagesTable = ({messageType, isReaded, telegramId, handleOpenDialog}) =>
 
     return (
         <>
-            {messages && messages.length > 0 && (
+            {isLoading && <Loader />}
+            {!isLoading && messages && messages.length > 0 && (
                 <Table>
                     <TableHead>
                         <TableRow className={styles.headerRow}>
