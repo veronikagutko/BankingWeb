@@ -6,7 +6,7 @@ const getOrders = createAsyncThunk('getOrders', async ({take, skip}) => {
     return orders;
 });
 
-const setOrderComplete = createAsyncThunk('setOrderComplete', async (id) => {
+const setOrderComplete = createAsyncThunk('setOrderComplete', async ({id}) => {
     await setOrderCompleteRequest(id);
 });
 

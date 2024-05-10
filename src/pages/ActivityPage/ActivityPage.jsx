@@ -14,11 +14,15 @@ const ActivityPage = () => {
     const [telegramId, setTelegramId] = useState(undefined);
 
     const fetchActivities = useCallback((currentTake, currentSkip, currentTelegramId) => {
-        dispatch(ActivityEffects.getActivity({
-            take: currentTake, 
-            skip: currentSkip, 
-            telegramId: currentTelegramId || null,
-        }));
+        try {
+            dispatch(ActivityEffects.getActivity({
+                take: currentTake, 
+                skip: currentSkip, 
+                telegramId: currentTelegramId || null,
+            }));
+        } catch {
+            toast.error('Произошла ошибка. Повторите запрос позже');
+        }
     }, [dispatch]);
 
     const handleChangePage = (value) => {
