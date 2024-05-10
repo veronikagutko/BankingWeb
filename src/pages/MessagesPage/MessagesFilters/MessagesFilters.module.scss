@@ -1,11 +1,5 @@
 @import '../../../styles/colors';
-
-@mixin inputBackground {
-    font-size: 18px;
-    background-color: rgba($DARK_GRAY, 0.2);
-    border: none;
-    border-bottom: 1px solid $BLACK;
-}
+@import '../../../styles/mixins';
 
 .filtersContainer {
     display: flex;
@@ -17,7 +11,6 @@
 .searchInput {
     @include inputBackground();
     padding: 10px 15px;
-    
     outline: none;
     transition: 0.3s;
 

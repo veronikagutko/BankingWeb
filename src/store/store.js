@@ -11,6 +11,6 @@ const store = configureStore({
         messages: MessagesReducer,
         orders: OrdersReducer,
     }
-})
+});
 
 export default store;

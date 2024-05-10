@@ -1,4 +1,5 @@
 @import '../../styles/colors';
+@import '../../styles/mixins';
 
 .sectionWrapper {
     display: flex;
@@ -9,26 +10,17 @@
 }
 
 .sectionContainer {
-    width: 60%;
-    padding: 15px 30px;
-    border-radius: 10px;
-    box-shadow: 10px 10px 15px 10px $DARK_GRAY;
+    @include sectionContainer(80%);
 
     & > h2 {
-        font-size: 30px;
-        font-weight: 600;
-        text-align: center;
-        text-transform: uppercase;
+        @include sectionTitle();
     }
 }
 
 .searchInput {
+    @include inputBackground();
     margin-top: 20px;
     padding: 10px 15px;
-    font-size: 18px;
-    background-color: transparent;
-    border: 1px solid $BLACK;
-    border-radius: 8px;
     outline: none;
     transition: 0.3s;
 
