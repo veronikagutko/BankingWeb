@@ -1,0 +1,56 @@
+@import '../../styles/colors';
+@import '../../styles/mixins';
+
+.sectionWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 30px 0;
+}
+
+.sectionContainer {
+    @include sectionContainer(80%);
+
+    & > h2 {
+        @include sectionTitle();
+    }
+}
+
+.searchInput {
+    @include inputBackground();
+    margin-top: 20px;
+    padding: 10px 15px;
+    outline: none;
+    transition: 0.3s;
+
+    &:hover, 
+    &:focus,
+    &:active {
+        border-color: $GREEN;
+        outline: hidden;
+
+        & + label {
+            color: $GREEN;
+        }
+    }
+}
+
+.dataRow {
+    & > td:first-child {
+        cursor: pointer;
+        transition: all 0.3s;
+
+        &:hover {
+            color: rgba($BLACK, 0.4);
+        }
+    }
+
+    &  > td:last-child {
+        text-wrap: nowrap;
+    }
+}
+
+.headerRow > th:first-child {
+    text-wrap: nowrap;
+}

@@ -1,0 +1,110 @@
+@import '../../styles/colors';
+@import '../../styles/animations';
+
+.contentWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+.contentContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    padding: 60px 30px;
+    justify-content: center;
+    width: 500px;
+    border-radius: 10px;
+    box-shadow: 10px 10px 50px $DARK_GRAY;
+}
+
+.formContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+
+    & > label {
+        margin: 0;
+    }
+}
+
+.inputContainer {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 5px;
+
+    & > input {
+        padding: 10px 15px;
+        font-size: 18px;
+        background-color: transparent;
+        border: 1px solid $BLACK;
+        border-radius: 8px;
+        outline: none;
+        transition: 0.3s;
+
+        &:hover, 
+        &:focus,
+        &:active {
+            border-color: $GREEN;
+            outline: hidden;
+
+            & + label {
+                color: $GREEN;
+            }
+        }
+    }
+
+    & > label {
+        font-weight: 500;
+        font-size: 20px;
+        transition: all 0.3s;
+    }
+}
+
+.submitButton {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 15px;
+    background-color: $GREEN;
+    border: none;
+    border-radius: 10px;
+    transition: all 0.3s;
+    text-decoration: none;
+    
+    & > span {
+        color: $WHITE;
+        font-size: 20px;
+        transition: all 0.3s;
+    }
+
+    &:hover {
+        background-color: $GREEN_LIGHT;
+    }
+
+    &:focus-visible {
+        outline: none;
+    }
+
+    &:disabled {
+        cursor: not-allowed;
+        background-color: $GREEN_DARK;
+
+        & > span {
+            color: $DARK_GRAY;
+        }
+    }
+}
+
+.loader {
+    width: 20.5px;
+    height: 20.5px;
+    border-radius: 40px;
+    background-color: transparent;
+    border: 2px solid $WHITE;
+    border-bottom: 2px solid transparent;
+    animation: spin 1s linear infinite;
+}

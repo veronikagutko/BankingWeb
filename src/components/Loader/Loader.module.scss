@@ -1,0 +1,19 @@
+@import '../../styles/colors';
+@import '../../styles/animations';
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 500px;
+
+    & > div {
+        width: 24px;
+        height: 24px;
+        border-radius: 100px;
+        background-color: transparent;
+        border: 2px solid $GREEN;
+        border-bottom: 2px transparent;
+        animation: spin 1s linear infinite;
+    }
+}
