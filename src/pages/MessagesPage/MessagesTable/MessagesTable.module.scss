@@ -8,3 +8,17 @@
         color: rgba($BLACK, 0.4);
     }
 }
+
+.setReadCheckbox {
+    & > button {
+        cursor: pointer;
+        font-weight: 500;
+        margin-left: 8px;
+        font-size: 14px;
+        text-decoration: underline;
+        color: $BLACK;
+        border: none;
+        outline: none;
+        background-color: transparent;
+    }
+}

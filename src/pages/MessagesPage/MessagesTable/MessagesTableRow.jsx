@@ -17,7 +17,7 @@ const MessagesTableRow = ({message, handleOpenDialog}) => {
             <TableCell>
                 {message.messageType === 1 ? 'Консультанты' : 'Разработчики'}
             </TableCell>
-            <TableCell align='center'>
+            <TableCell align='center' className={styles.setReadCheckbox}>
                 <input type='checkbox' checked={message.isReaded} readOnly />
                 {message.isReaded ? (
                     <button onClick={() => handleOpenDialog(0, message.id)}>Просмотр</button>

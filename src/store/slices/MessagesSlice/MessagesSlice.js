@@ -15,7 +15,6 @@ const sendMessage = createAsyncThunk('sendMessage', async ({message, messageId})
     await sendMessageRequest(message, messageId);
 });
 
-// TODO: Add get message response data
 const initialState = {
     isLoading: false,
     messages: [],
@@ -39,21 +38,8 @@ const messagesSlice = createSlice({
             state.count = action.payload.count;
             state.isLoading = false;
         });
-        builder.addCase(getMessageResponse.pending, state => {
-            state.isLoading = true;
-        });
-        builder.addCase(getMessageResponse.rejected, state => {
-            state.isLoading = false;
-        });
         builder.addCase(getMessageResponse.fulfilled, (state, action) => {
             state.responseMessage = {...action.payload};
-            state.isLoading = false;
-        });
-        builder.addCase(sendMessage.pending, state => {
-            state.isLoading = true;
-        });
-        builder.addCase(sendMessage.rejected, state => {
-            state.isLoading = false;
         });
     },
 });
