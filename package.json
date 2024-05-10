@@ -1,7 +1,7 @@
 {
   "name": "scss_workbook",
   "version": "0.1.0",
-  "homepage": "http://daniilserga.github.io/BankingWeb",
+  "homepage": "https://daniilserga.github.io/BankingWeb/",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.11.4",
