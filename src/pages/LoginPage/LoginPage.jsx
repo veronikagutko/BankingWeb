@@ -9,8 +9,8 @@ import { toast } from 'react-toastify';
 const LoginPage = () => {
     const dispatch = useDispatch();
     const {isLoading} = useSelector(state => state.auth);
-    const [name, setName] = useState('admin');
-    const [password, setPassword] = useState('bel_admin');
+    const [name, setName] = useState('');
+    const [password, setPassword] = useState('');
     const [isSubmitDisabled, setSubmitDisabled] = useState(true);
 
     const handleAuthorize = () => {
