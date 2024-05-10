@@ -45,7 +45,7 @@ const LoginPage = () => {
                         <label htmlFor="password">Пароль</label>
                     </div>
 
-                    <Link to="/activity" disabled={isSubmitDisabled || isLoading} onClick={handleAuthorize} className={styles.submitButton}>
+                    <Link to="activity" disabled={isSubmitDisabled || isLoading} onClick={handleAuthorize} className={styles.submitButton}>
                         {isLoading ? <div className={styles.loader}/> : <span>Войти</span>}
                     </Link>
                 </div>

@@ -10,9 +10,9 @@ const MainNavigator = () => {
         <div>
             <Header />
             <Routes>
-                <Route path="/activity" element={<ActivityPage />} />
-                <Route path="/messages" element={<MessagesPage />} />
-                <Route path="/orders" element={<OrdersPage />} />
+                <Route path="activity" element={<ActivityPage />} />
+                <Route path="messages" element={<MessagesPage />} />
+                <Route path="orders" element={<OrdersPage />} />
             </Routes>
         </div>
     );
