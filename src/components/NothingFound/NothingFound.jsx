@@ -1,9 +1,10 @@
 import React from 'react';
+import styles from './NothingFound.module.scss';
 
 const NothingFound = () => {
     return (
-        <div>
-            <h2>Ничего не найдено. Попробуйте другие параметры</h2>
+        <div className={styles.container}>
+            <h2>Ничего не было найдено.<br />Попробуйте другие параметры</h2>
         </div>
     );
 };

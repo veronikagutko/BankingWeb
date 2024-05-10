@@ -14,6 +14,9 @@ const OrdersTableRow = ({order}) => {
             .catch((err) => {
                 console.log('err')
                 toast.error('Произошла ошибка. Повторите запрос позже');
+            })
+            .then(() => {
+                toast.success(isChecked ? 'Пометка об обработке удалена' : 'Пометка об обработке установлена');
             });
         setChecked(!isChecked);
     }, [dispatch, order.id, isChecked]);

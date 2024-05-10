@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { MessagesEffects } from '../../../store/slices/MessagesSlice/MessagesSlice';
 import Loader from '../../../components/Loader/Loader';
 import { toast } from 'react-toastify';
+import NothingFound from '../../../components/NothingFound/NothingFound';
 
 const MessagesTable = ({messageType, isReaded, telegramId, handleOpenDialog}) => {
     const dispatch = useDispatch();
@@ -14,11 +15,12 @@ const MessagesTable = ({messageType, isReaded, telegramId, handleOpenDialog}) =>
     const {messages, count, isLoading} = useSelector(state => state.messages);
 
     const fetchMessages = useCallback(({telegramId, messageType, isReaded, take, skip}) => {
-        try {
-            dispatch(MessagesEffects.getMessages({telegramId, messageType, isReaded, take, skip}));
-        } catch {
-            toast.error('Произошла ошибка. Повторите запрос позже');
-        }
+        dispatch(MessagesEffects.getMessages({telegramId, messageType, isReaded, take, skip}))
+            .unwrap()
+            .catch((err) => {
+                console.log(err);
+                toast.error('Произошла ошибка. Повторите запрос позже');
+            });
     }, [dispatch]);
 
     useEffect(() => {
@@ -32,6 +34,7 @@ const MessagesTable = ({messageType, isReaded, telegramId, handleOpenDialog}) =>
     return (
         <>
             {isLoading && <Loader />}
+            {!isLoading && messages.length === 0 && <NothingFound />}
             {!isLoading && messages && messages.length > 0 && (
                 <Table>
                     <TableHead>

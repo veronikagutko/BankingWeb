@@ -5,7 +5,7 @@ import Header from '../../components/Header/Header';
 import MessagesPage from '../MessagesPage/MessagesPage';
 import OrdersPage from '../OrdersPage/OrdersPage';
 
-const MainPage = () => {
+const MainNavigator = () => {
     return (
         <div>
             <Header />
@@ -18,4 +18,4 @@ const MainPage = () => {
     );
 };
 
-export default MainPage;
+export default MainNavigator;

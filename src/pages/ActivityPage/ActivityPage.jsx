@@ -5,6 +5,7 @@ import { Table, TableBody, TableCell, TableFooter, TableHead, TablePagination, T
 import { ActivityEffects } from '../../store/slices/ActivitySlice/ActivitySlice';
 import { toast } from 'react-toastify';
 import Loader from '../../components/Loader/Loader';
+import NothingFound from '../../components/NothingFound/NothingFound';
 
 const ActivityPage = () => {
     const dispatch = useDispatch();
@@ -14,15 +15,14 @@ const ActivityPage = () => {
     const [telegramId, setTelegramId] = useState(undefined);
 
     const fetchActivities = useCallback((currentTake, currentSkip, currentTelegramId) => {
-        try {
-            dispatch(ActivityEffects.getActivity({
-                take: currentTake, 
-                skip: currentSkip, 
-                telegramId: currentTelegramId || null,
-            }));
-        } catch {
+        dispatch(ActivityEffects.getActivity({
+            take: currentTake, 
+            skip: currentSkip, 
+            telegramId: currentTelegramId || null,
+        })).unwrap().catch((err) => {
+            console.log(err);
             toast.error('Произошла ошибка. Повторите запрос позже');
-        }
+        });
     }, [dispatch]);
 
     const handleChangePage = (value) => {
@@ -55,8 +55,9 @@ const ActivityPage = () => {
                 <h2>Активность</h2>
 
                 <input className={styles.searchInput} placeholder='ID телеграмма' type="text" value={telegramId} onChange={(e) => setTelegramId(e.target.value)} />
-                
+
                 {isLoading && <Loader />}
+                {!isLoading && activities.length === 0 && <NothingFound />}
                 {!isLoading && activities.length > 0 && (
                     <div className={styles.tableContainer}>
                         <Table>

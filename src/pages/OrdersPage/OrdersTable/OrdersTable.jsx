@@ -35,7 +35,7 @@ const OrdersTable = () => {
                             <TableCell>Продукт</TableCell>
                             <TableCell>ФИО</TableCell>
                             <TableCell>Номер телефона</TableCell>
-                            <TableCell align='center'>Прочитано</TableCell>
+                            <TableCell align='center'>Обработано</TableCell>
                             <TableCell>Отправлено</TableCell>
                         </TableRow>
                     </TableHead>

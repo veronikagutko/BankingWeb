@@ -1,5 +1,5 @@
 import './App.scss';
-import MainPage from './pages/MainPage/MainPage';
+import MainNavigator from './pages/MainNavigator/MainNavigator';
 import LoginPage from './pages/LoginPage/LoginPage';
 import { useDispatch, useSelector } from 'react-redux';
 import { ToastContainer } from 'react-toastify';
@@ -25,7 +25,7 @@ const App = () => {
 	return (
 	    <div className="App">
 			<ToastContainer position='bottom-right' stacked />
-			{isAuthorized ? <MainPage /> : <LoginPage />}
+			{isAuthorized ? <MainNavigator /> : <LoginPage />}
 		</div>
 	);
 }

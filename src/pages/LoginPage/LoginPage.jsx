@@ -3,18 +3,23 @@ import styles from './LoginPage.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { AuthEffects } from '../../store/slices/AuthSlice/AuthSlice';
 import Logo from '../../components/Logo/Logo';
-import { STORAGE_KEYS } from '../../constants/SessionStorageKeys';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const LoginPage = () => {
     const dispatch = useDispatch();
-    const {isLoading, isAuthorized, accessToken, validFrom, validTo} = useSelector(state => state.auth);
+    const {isLoading} = useSelector(state => state.auth);
     const [name, setName] = useState('admin');
     const [password, setPassword] = useState('bel_admin');
     const [isSubmitDisabled, setSubmitDisabled] = useState(true);
 
     const handleAuthorize = () => {
-        dispatch(AuthEffects.authorize({name, password}));
+        dispatch(AuthEffects.authorize({name, password}))
+            .unwrap()
+            .catch((err) => {
+                console.log(err);
+                toast.error('Произошла ошибка. Повторите запрос позже');
+            });
     };
 
     useEffect(() => {
