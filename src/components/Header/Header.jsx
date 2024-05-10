@@ -20,7 +20,7 @@ const Header = () => {
                 <Link to="activity">Активность</Link>
                 <Link to="messages">Сообщения</Link>
                 <Link to="orders">Заказы</Link>
-                <button onClick={() => handleLogout()}>Выйти</button>
+                <Link to="/" onClick={() => handleLogout()}>Выйти</Link>
             </nav>
         </header>
     );
