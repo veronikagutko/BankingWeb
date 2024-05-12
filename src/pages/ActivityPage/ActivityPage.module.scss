@@ -17,9 +17,15 @@
     }
 }
 
+.sectionHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-top: 20px;
+}
+
 .searchInput {
     @include inputBackground();
-    margin-top: 20px;
     padding: 10px 15px;
     outline: none;
     transition: 0.3s;
@@ -32,6 +38,30 @@
 
         & + label {
             color: $GREEN;
+        }
+    }
+}
+
+.statisticsNavigator {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: $BLACK;
+    text-decoration: none;
+    transition: all 0.3s;
+
+    & > h4 {
+        color: $BLACK;
+        font-size: 16px;
+        font-weight: 600;
+        transition: all 0.3s;
+    }
+
+    &:hover {
+        color: rgba($BLACK, 0.4);
+
+        & > h4 {
+            color: rgba($BLACK, 0.4);
         }
     }
 }

@@ -6,6 +6,8 @@ import { ActivityEffects } from '../../store/slices/ActivitySlice/ActivitySlice'
 import { toast } from 'react-toastify';
 import Loader from '../../components/Loader/Loader';
 import NothingFound from '../../components/NothingFound/NothingFound';
+import { Link } from 'react-router-dom';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
 const ActivityPage = () => {
     const dispatch = useDispatch();
@@ -54,7 +56,14 @@ const ActivityPage = () => {
             <div className={styles.sectionContainer}>
                 <h2>Активность</h2>
 
-                <input className={styles.searchInput} placeholder='ID телеграмма' type="text" value={telegramId} onChange={(e) => setTelegramId(e.target.value)} />
+                <div className={styles.sectionHeader}>
+                    <input className={styles.searchInput} placeholder='ID телеграмма' type="text" value={telegramId} onChange={(e) => setTelegramId(e.target.value)} />
+
+                    <Link to="statistics" className={styles.statisticsNavigator}>
+                        <h4>Cтатистика</h4>
+                        <ArrowForwardIcon />
+                    </Link>
+                </div>
 
                 {isLoading && <Loader />}
                 {!isLoading && activities.length === 0 && <NothingFound />}
