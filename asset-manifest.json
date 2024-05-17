@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/BelarusbankWeb/static/css/main.cc68512b.css",
+    "main.js": "/BelarusbankWeb/static/js/main.7b338ece.js",
+    "index.html": "/BelarusbankWeb/index.html",
+    "main.cc68512b.css.map": "/BelarusbankWeb/static/css/main.cc68512b.css.map",
+    "main.7b338ece.js.map": "/BelarusbankWeb/static/js/main.7b338ece.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.cc68512b.css",
+    "static/js/main.7b338ece.js"
+  ]
+}
